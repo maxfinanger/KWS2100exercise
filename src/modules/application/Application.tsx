@@ -37,7 +37,7 @@ export function Application() {
     return (
         <>
             <header>
-                <h1>Kommune kart</h1>
+                <h1>Kart Over Norges Kommuner</h1>
             </header>
             <nav>
                 <a href={"#"} onClick={handleFocusUser}>
