@@ -4,7 +4,7 @@ import TileLayer from "ol/layer/Tile";
 import { OSM } from "ol/source";
 import { useGeographic } from "ol/proj";
 
-import "./application.css";
+import "./Application.css";
 import "ol/ol.css";
 import { KommuneLayerCheckbox } from "../kommune/KommuneLayerCheckBox";
 import { Layer } from "ol/layer";
