@@ -19,4 +19,5 @@ nav {
     translate: -50% calc(-50% - 30px);
     padding: 0.5em;
     color: #1a1a1a;
+    border-radius: 0.5em;
 }
