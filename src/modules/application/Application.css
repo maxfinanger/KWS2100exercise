@@ -12,6 +12,7 @@
 nav {
     display: flex;
     gap: 1rem;
+    padding: 0.5rem;
 }
 
 .kommune-overlay {

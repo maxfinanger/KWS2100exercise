@@ -3,7 +3,6 @@ import { Map, View } from "ol";
 import TileLayer from "ol/layer/Tile";
 import { OSM } from "ol/source";
 import { useGeographic } from "ol/proj";
-
 import "./Application.css";
 import "ol/ol.css";
 import { KommuneLayerCheckbox } from "../kommune/KommuneLayerCheckBox";
@@ -40,7 +39,13 @@ export function Application() {
                 <h1>Kart Over Norges Kommuner</h1>
             </header>
             <nav>
-                <button onClick={handleFocusUser}>Focus on me</button>
+                <button
+                    type="button"
+                    className="btn btn-light btn-sm"
+                    onClick={handleFocusUser}
+                >
+                    Focus on me
+                </button>
                 <KommuneLayerCheckbox map={map} setLayers={setLayers} />
             </nav>
             <div ref={mapRef}></div>
