@@ -12,7 +12,7 @@ import { Layer } from "ol/layer";
 useGeographic();
 
 const map = new Map({
-    view: new View({ center: [10, 59], zoom: 8 }),
+    view: new View({ center: [10.5, 59.9], zoom: 8 }),
 });
 
 export function Application() {
@@ -22,7 +22,7 @@ export function Application() {
             const { latitude, longitude } = pos.coords;
             map.getView().animate({
                 center: [longitude, latitude],
-                zoom: 10,
+                zoom: 18,
             });
         });
     }
@@ -40,9 +40,7 @@ export function Application() {
                 <h1>Kart Over Norges Kommuner</h1>
             </header>
             <nav>
-                <a href={"#"} onClick={handleFocusUser}>
-                    Focus on me
-                </a>
+                <button onClick={handleFocusUser}>Focus on me</button>
                 <KommuneLayerCheckbox map={map} setLayers={setLayers} />
             </nav>
             <div ref={mapRef}></div>

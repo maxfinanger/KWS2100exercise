@@ -86,7 +86,7 @@ export function KommuneLayerCheckbox({
                     checked={checked}
                     onChange={(e) => setChecked(e.target.checked)}
                 />
-                {checked ? "Hide" : "Show"} kommune layer
+                {checked ? " Hide" : " Show"} kommune layer
             </label>
             <div ref={overlayRef} className={"kommune-overlay"}>
                 {selectedKommune && (
