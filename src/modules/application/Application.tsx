@@ -7,6 +7,7 @@ import "./Application.css";
 import "ol/ol.css";
 import { KommuneLayerCheckbox } from "../kommune/KommuneLayerCheckBox";
 import { Layer } from "ol/layer";
+import { FylkeLayerCheckbox } from "../fylke/fylkeLayerCheckbox";
 
 useGeographic();
 
@@ -25,8 +26,6 @@ export function Application() {
             });
         });
     }
-
-
 
     const [layers, setLayers] = useState<Layer[]>([
         new TileLayer({ source: new OSM() }),
@@ -49,6 +48,7 @@ export function Application() {
                     Focus on me
                 </button>
                 <KommuneLayerCheckbox map={map} setLayers={setLayers} />
+                <FylkeLayerCheckbox map={map} setLayers={setLayers} />
             </nav>
             <div ref={mapRef}></div>
         </>
