@@ -22,3 +22,11 @@ nav {
     color: #1a1a1a;
     border-radius: 0.5em;
 }
+
+.land-overlay {
+    background-color: white;
+    translate: -50% -50%;
+    padding: 0.5em;
+    color: #1a1a1a;
+    border-radius: 0.5em;
+}

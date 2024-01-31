@@ -15,11 +15,7 @@ import { Feature, Map, MapBrowserEvent, Overlay } from "ol";
 import { Polygon } from "ol/geom";
 
 type LandProperties = {
-    kommunenummer: string;
-    navn: {
-        sprak: string;
-        navn: string;
-    }[];
+    ADMIN: string;
 };
 
 type LandFeature = Feature<Polygon> & {
@@ -86,14 +82,10 @@ export function LandLayerCheckbox({
                 />
                 {checked ? " Hide" : " Show"} land layer
             </label>
-            <div ref={overlayRef} className={"kommune-overlay"}>
+            <div ref={overlayRef} className={"land-overlay"}>
                 {selectedLand && (
                     <>
-                        {
-                            (
-                                selectedLand.getProperties() as LandProperties
-                            ).navn.find((n) => n.sprak === "nor")!.navn
-                        }
+                        {(selectedLand.getProperties() as LandProperties).ADMIN}
                     </>
                 )}
             </div>
