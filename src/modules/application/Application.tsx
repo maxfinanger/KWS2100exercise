@@ -8,6 +8,7 @@ import "ol/ol.css";
 import { KommuneLayerCheckbox } from "../kommune/KommuneLayerCheckBox";
 import { Layer } from "ol/layer";
 import { FylkeLayerCheckbox } from "../fylke/fylkeLayerCheckbox";
+import { LandLayerCheckbox } from "../land/landLayerChackBox";
 
 useGeographic();
 
@@ -49,6 +50,7 @@ export function Application() {
                 </button>
                 <KommuneLayerCheckbox map={map} setLayers={setLayers} />
                 <FylkeLayerCheckbox map={map} setLayers={setLayers} />
+                <LandLayerCheckbox map={map} setLayers={setLayers} />
             </nav>
             <div ref={mapRef}></div>
         </>
