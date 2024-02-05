@@ -38,9 +38,9 @@ export function Application() {
     return (
         <>
             <header>
-                <h1>Kart Over Norges Kommuner</h1>
+                <h1 className="head">Kart</h1>
             </header>
-            <nav>
+            <nav className="nav">
                 <button
                     type="button"
                     className="btn btn-light btn-sm"
