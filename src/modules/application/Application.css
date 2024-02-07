@@ -6,31 +6,32 @@
     display: grid;
     grid-template-rows: auto auto 1fr;
     height: 100dvh;
-    width: 100%;
 }
 
 nav {
     display: flex;
-    gap: 1rem;
+    gap: 1em;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+}
+
+main aside {
+    display: grid;
+    grid-template-columns: 0;
+    transition: grid-template-columns 0.5s ease-in-out;
+    overflow-x: clip;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+
+main aside.visible {
+    grid-template-columns: auto;
+}
+
+main aside > * {
     padding: 0.5rem;
-}
-
-.kommune-overlay {
-    background-color: white;
-    translate: -50% calc(-50% - 30px);
-    padding: 0.5em;
-    color: #1a1a1a;
-    border-radius: 0.5em;
-}
-
-.land-overlay {
-    background-color: white;
-    translate: -50% -50%;
-    padding: 0.5em;
-    color: #1a1a1a;
-    border-radius: 0.5em;
-}
-
-.head {
-    text-align: center;
+    min-width: 25ch;
 }

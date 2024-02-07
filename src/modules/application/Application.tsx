@@ -1,20 +1,16 @@
 import React, { MutableRefObject, useEffect, useRef, useState } from "react";
-import { Map, View } from "ol";
 import TileLayer from "ol/layer/Tile";
 import { OSM } from "ol/source";
-import { useGeographic } from "ol/proj";
-import "./Application.css";
+
+import "./application.css";
 import "ol/ol.css";
 import { KommuneLayerCheckbox } from "../kommune/KommuneLayerCheckBox";
+import { map, MapContext } from "../map/mapContext";
 import { Layer } from "ol/layer";
+import { KommuneAside } from "../kommune/kommuneAside";
 import { FylkeLayerCheckbox } from "../fylke/fylkeLayerCheckbox";
+import { FylkeAside } from "../fylke/fylkeAside";
 import { LandLayerCheckbox } from "../land/landLayerChackBox";
-
-useGeographic();
-
-const map = new Map({
-    view: new View({ center: [10.5, 59.9], zoom: 8 }),
-});
 
 export function Application() {
     function handleFocusUser(e: React.MouseEvent) {
@@ -23,7 +19,7 @@ export function Application() {
             const { latitude, longitude } = pos.coords;
             map.getView().animate({
                 center: [longitude, latitude],
-                zoom: 18,
+                zoom: 10,
             });
         });
     }
@@ -31,28 +27,28 @@ export function Application() {
     const [layers, setLayers] = useState<Layer[]>([
         new TileLayer({ source: new OSM() }),
     ]);
+    useEffect(() => map.setLayers(layers), [layers]);
 
     const mapRef = useRef() as MutableRefObject<HTMLDivElement>;
     useEffect(() => map.setTarget(mapRef.current), []);
-    useEffect(() => map.setLayers(layers), [layers]);
     return (
-        <>
+        <MapContext.Provider value={{ map, layers, setLayers }}>
             <header>
-                <h1 className="head">Kart</h1>
+                <h1>Kommune kart</h1>
             </header>
-            <nav className="nav">
-                <button
-                    type="button"
-                    className="btn btn-light btn-sm"
-                    onClick={handleFocusUser}
-                >
+            <nav>
+                <a href={"#"} onClick={handleFocusUser}>
                     Focus on me
-                </button>
-                <KommuneLayerCheckbox map={map} setLayers={setLayers} />
-                <FylkeLayerCheckbox map={map} setLayers={setLayers} />
-                <LandLayerCheckbox map={map} setLayers={setLayers} />
+                </a>
+                <KommuneLayerCheckbox />
+                <FylkeLayerCheckbox />
+                <LandLayerCheckbox />
             </nav>
-            <div ref={mapRef}></div>
-        </>
+            <main>
+                <div ref={mapRef}></div>
+                <FylkeAside />
+                <KommuneAside />
+            </main>
+        </MapContext.Provider>
     );
 }
